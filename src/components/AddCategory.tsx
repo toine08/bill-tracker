@@ -14,17 +14,31 @@ function AddCategory(props: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!category) {
-      toast.error("Error, please add a category")
+      toast.error("Error, please add a category",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#2d3748',
+          color: '#fff',
+        },
+      })
       
       return;
     } else {
-      toast.success("Category added");
+      toast.success("Category added",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#2d3748',
+          color: '#fff',
+        },
+      });
     }
     props.addCategory(category);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8">
+    <form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 text-white">
 
   <div className="mb-4">
 

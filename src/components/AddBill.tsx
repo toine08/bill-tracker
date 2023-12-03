@@ -26,17 +26,31 @@ function AddBill(props: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!amount) {
-      toast.error("Please enter a bill");
+      toast.error("Please enter a bill",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#2d3748',
+          color: '#fff',
+        },
+      });
       return;
     } else {
-      toast.success("Bill added");
+      toast.success("Bill added",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#2d3748',
+          color: '#fff',
+        },
+      });
     }
     props.addBill(amount, category || props.categories[0], date);
   };
 
 
   return (
-<form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 text-white">
 
 <div className="mb-4">
 

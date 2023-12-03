@@ -78,7 +78,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gray-800 min-h-screen dark:text-white">
+    <div className="bg-gray-800 min-h-screen text-white">
 
   <div className="App">
 

@@ -34,42 +34,64 @@ function AddBill(props: Props) {
     props.addBill(amount, category || props.categories[0], date);
   };
 
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="h-100 w-full flex items-center justify-center font-sans"
-    >
-      <div className="bg-blue-200  rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
-        <div className="mb-4">
-          <h1 className="text-grey-darkest">Enter a new bill</h1>
-          <div className="flex mt-4">
-            <select onChange={(e) => setCategory(e.target.value)}>
-              {props.categories
-                ? props.categories.map((value, index) => {
-                    return (
-                      <option key={index} value={value}>
-                        {value}
-                      </option>
-                    );
-                  })
-                : ""}
-            </select>
-            <div className="mt-2 ml-1">
-              <DatePicker selected={date} onChange={handleChangeDate} />
-            </div>
-            <input
-              placeholder="Add category"
-              value={amount}
-              onChange={handleChangeAmount}
-              className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
-            />
-            <button className="flex-no-shrink p-2 border-2 rounded-lg bg-teal bg-green-500 text-white border-none hover:text-white hover:bg-teal">
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
+<form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+<div className="mb-4">
+
+  <h1 className="text-gray-100 text-lg font-medium mb-2">Enter a new bill</h1>
+
+  <div className="flex flex-wrap -mx-3 mb-6">
+  
+    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <select 
+        onChange={(e) => setCategory(e.target.value)}
+        className="bg-gray-700 text-gray-100 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500"
+      >
+        {props.categories.map((value, index) => (
+          <option key={index} value={value}>
+            {value} 
+          </option>
+        ))}
+      </select>
+    </div>
+
+    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <DatePicker
+        selected={date}
+        onChange={handleChangeDate}
+        className="bg-gray-700 text-gray-100 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500" 
+      />
+    </div>
+
+    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <input
+        placeholder="Amount"
+        value={amount}
+        onChange={handleChangeAmount}
+        className="bg-gray-700 text-gray-100 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500"
+      />
+    </div>
+
+  </div>
+
+</div>
+
+<div className="flex items-center justify-between">
+
+  <div className="w-full md:w-2/3"></div>
+
+  <div className="w-full md:w-1/3 text-right">
+    <button className="bg-gray-600 text-gray-100 hover:bg-gray-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      Add  
+    </button>
+  </div>
+
+</div>
+
+</form>
+
   );
 }
 

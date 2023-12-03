@@ -31,9 +31,23 @@ function BillsTable(props: Props) {
               <td>{value.amount} CHF</td>
               <td>{value.category}</td>
               <td colSpan={4} className="text-center pt-5">
-                <button className="underline" onClick={() => removeBill(index)}>
-                  X
-                </button>
+              <button onClick={() => removeBill(index)}
+  type="button"
+  className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+>
+  <svg 
+    className="w-4 h-4" 
+    aria-hidden="true" 
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path 
+      fillRule="evenodd"
+      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" 
+      clipRule="evenodd"
+    />
+  </svg>
+</button>
               </td>
             </tr>
           );

@@ -14,7 +14,8 @@ function AddCategory(props: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!category) {
-      toast.error("Please enter a category");
+      toast.error("Error, please add a category")
+      
       return;
     } else {
       toast.success("Category added");
@@ -23,30 +24,40 @@ function AddCategory(props: Props) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="h-100 w-full flex items-center justify-center font-sans"
-    >
-      <div className="bg-blue-200  rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
-        <div className="mb-4">
-          <h1 className="text-grey-darkest">Enter a category of bills</h1>
-          <p className="text-small text-grey">
-            E.g. 'Electricity' or 'Gas' or 'Internet'
-          </p>
-          <div className="flex mt-4">
-            <input
-              placeholder="Add category"
-              value={category}
-              onChange={handleCategory}
-              className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
-            />
-            <button className="flex-no-shrink p-2 border-2 rounded-lg bg-teal bg-green-500 text-white border-none hover:text-white hover:bg-teal">
-              Add
-            </button>
-          </div>
-        </div>
+    <form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8">
+
+  <div className="mb-4">
+
+    <h1 className="text-gray-100 text-lg font-medium mb-2">
+      Enter a category of bills
+    </h1>
+
+    <p className="text-gray-400 text-sm">
+      E.g. 'Electricity' or 'Gas' or 'Internet'
+    </p>
+
+    <div className="flex flex-wrap -mx-3 mt-4">
+    
+      <div className="w-full px-3">
+        <input
+          placeholder="Add category" 
+          value={category}
+          onChange={handleCategory}
+          className="bg-gray-700 text-gray-100 border border-gray-600 rounded py-3 px-4 leading-tight focus:border-gray-500 focus:bg-gray-600 focus:outline-none" 
+        />
       </div>
-    </form>
+
+      <div className="w-full flex items-center justify-between px-3 mt-4">
+        <button className="bg-gray-600 hover:bg-gray-500 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Add 
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
   );
 }
 

@@ -12,7 +12,7 @@ function NavBar(props: Props) {
   const liStyle = "p-4 inline bg-grey-lighter hover:bg-grey-light uppercase font-black cursor-pointer"
   return (
     <div className="bg-gray-900 flex justify-between items-center">
-      <h1 className="text-2xl font-bold text-white">Bill Tracker</h1> 
+      <h1 className="ml-5 text-2xl font-bold text-white">Bill Tracker</h1> 
       <div>  
         <ul className="list-reset flex">
         {props.categories

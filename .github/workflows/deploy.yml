@@ -1,36 +1,33 @@
-name: Build and Deploy
-
 on:
   push:
     branches: [main]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    
-    - name: Install dependencies  
-      run: pnpm install
-    
-    - name: Build project
-      run: pnpm vite build
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-    - name: Upload artifact  
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist-files
-        path: |
-          dist
-          !dist/**/*.map
+      - name: Install dependencies
+        run: npm install -g pnpm
+          
+      - name: Build project
+        run: pnpm install && pnpm vite build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: |
+            dist
+            !dist/**/*.map
 
   deploy:
     needs: build
@@ -38,14 +35,14 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
       
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v3
-      with: 
-        name: dist-files
-        path: dist
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with: 
+          name: dist-files
+          path: dist
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        publish_dir: ./dist
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
